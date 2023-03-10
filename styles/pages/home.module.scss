@@ -1,0 +1,14 @@
+
+@import "@styles/base/_reset.scss";
+@import "@styles/base/_mixins.scss";
+@import "@styles/base/_typography.scss";
+@import "@styles/abstracts/_colors.scss";
+@import "@styles/abstracts/_variables.scss";
+
+#main {
+
+	h1 {
+		@include hero-text-regular;
+	}
+
+}
