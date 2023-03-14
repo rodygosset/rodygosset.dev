@@ -29,12 +29,12 @@ export default {
             title: "Phone Number Field Label"
         },
         {
-            name: "message",
+            name: "message_label",
             type: "string",
             title: "Message Label"
         },
         {
-            name: "submitButtonText",
+            name: "submit_button_text",
             type: "string",
             title: "Submit Button Text"
         },
