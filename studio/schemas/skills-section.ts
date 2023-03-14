@@ -33,6 +33,11 @@ export default {
             name: "header_caption",
             type: "text",
             title: "Header Caption"
+        },
+        {
+            name: "skill_card_cta_text",
+            type: "string",
+            title: "Skill Card CTA Text"
         }
     ]
 }

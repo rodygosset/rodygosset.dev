@@ -28,5 +28,10 @@ export default {
             type: "string",
             title: "Hero Text Caption 2"
         },
+        {
+            name: "project_card_cta_text",
+            type: "string",
+            title: "Project Card CTA Text"
+        }
     ]
 }
