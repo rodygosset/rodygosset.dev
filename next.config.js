@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+	reactStrictMode: true,
 }
 
-module.exports = nextConfig
+// configure locale sub-path routing
+
+module.exports = {
+	...nextConfig,
+	i18n: {
+		locales: ['en-US', 'fr'],
+		defaultLocale: 'en-US'
+	}
+}
