@@ -8,6 +8,10 @@ export interface HeroSectionType {
     job_title: string;
     intro: string;
     email: string;
+    email_copy_message: string;
+    email_copy_success_message: string;
+    github_link: string;
+    linkedin_link: string;
     buttonText: string;
 }
 

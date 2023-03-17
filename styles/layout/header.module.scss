@@ -1,0 +1,23 @@
+@import "@styles/base/_mixins.scss";
+@import "@styles/base/_typography.scss";
+@import "@styles/abstracts/_colors.scss";
+@import "@styles/abstracts/_variables.scss";
+
+#header {
+
+    @include flex-container(row, nowrap, space-between, center);
+
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 999;
+    width: 100vw;
+    height: $nav-bar-height;
+
+    padding: 20px 5vw;
+
+    @media (max-width: $bp-md) {
+        padding: 20px 10vw;
+    }
+
+}

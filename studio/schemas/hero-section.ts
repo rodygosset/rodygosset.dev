@@ -34,6 +34,26 @@ export default {
             title: "Email Adress"
         },
         {
+            name: "email_copy_message",
+            type: "string",
+            title: "Email Copy Message"
+        },
+        {
+            name: "email_copy_success_message",
+            type: "string",
+            title: "Email Copy Success Message"
+        },
+        {
+            name: "github_link",
+            type: "string",
+            title: "GitHub Link"
+        },
+        {
+            name: "linkedin_link",
+            type: "string",
+            title: "LinkedIn Link"
+        },
+        {
             name: "buttonText",
             type: "string",
             title: "CTA Text"

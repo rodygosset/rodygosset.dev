@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { getContactFormContent, getHeroSectionContent, getProjectCardsContent, getSkillCardsContent, getSkillsSectionContent, getWorksSectionContent } from '@utils/data-fetching'
 import { useRouter } from 'next/router'
 import HeroSection from '@components/hero-section'
+import Header from '@components/layout/header'
 
 interface Props {
 	heroSectionContent: Awaited<ReturnType<typeof getHeroSectionContent>>,
@@ -61,6 +62,7 @@ const Home: NextPage<Props> = (
 				<meta name="description" content="Rody Gosset's portfolio - Web developper & designer" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
+			<Header/>
 			<main id={styles.main}>
 				<HeroSection content={getLocaleHeroSectionContent()} />
 			</main>

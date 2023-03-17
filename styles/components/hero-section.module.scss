@@ -1,0 +1,125 @@
+@import "@styles/base/_reset.scss";
+@import "@styles/base/_mixins.scss";
+@import "@styles/base/_typography.scss";
+@import "@styles/abstracts/_colors.scss";
+@import "@styles/abstracts/_variables.scss";
+
+
+.heroSection {
+
+    background: url("/images/hero-background-image.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    @include flex-container(row, nowrap, center, center);
+    min-width: fit-content;
+    width: 100vw;
+    min-height: 100vh;
+    height: fit-content;
+    padding: $nav-bar-height 5vw 5vh;
+    gap: 60px;
+
+    .textContent {
+
+        @include flex-container(column, nowrap, center, flex-start);
+        gap: 60px;
+
+        .greeting {
+
+            @include flex-container(column, nowrap, center, flex-start);
+            gap: 10px;
+
+            h1 {
+                @include hero-text-regular;
+                background: $main-gradient;
+                background-clip: text;
+                color: transparent;
+            }
+    
+            p {
+                @include header-2-light;
+
+                &:first-child {
+                    color: $black-400;
+                }
+            }
+            
+        }
+
+        p.intro {
+            width: 100%;
+            max-width: 350px;
+            color: $black-600;
+        }
+
+        .links {
+
+            @include flex-container(row, nowrap, center, center);
+            gap: 30px;
+
+            a svg {
+                width: 24px;
+                height: 24px;
+            }
+
+        }
+
+    }
+
+
+    .mobileIllustration {
+        display: none;
+    }
+
+    @media (max-width: $bp-md) {
+
+        padding: $mobile-nav-bar-height 10vw 5vh;
+
+        .desktopIllustration {
+            display: none;
+        }
+
+        .textContent {
+            @include flex-container(column, nowrap, center, center);
+
+            gap: 40px;
+
+            .greeting {
+                max-width: 250px;
+                align-items: center;
+                text-align: center;
+
+                p {
+                    font-size: $h3-font-size;
+                }
+
+                h1 {
+                    font-size: $h2-font-size;
+                }
+            }
+
+            p.intro {
+                display: none;
+                text-align: center;
+            }
+
+            .mobileIllustration {
+                display: initial;
+                max-height: 200px;
+            }
+
+            .links {
+                flex-wrap: wrap-reverse;
+            }
+
+            span {
+                @include text-overflow-ellipsis;
+            }
+
+        }
+
+
+    }
+
+    
+}

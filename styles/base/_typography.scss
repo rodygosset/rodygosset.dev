@@ -12,6 +12,7 @@ $main-font: 'Josefin Sans';
 $highlight-font: 'Kiona';
 
 
+$font-weight-light: 200;
 $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
@@ -79,6 +80,10 @@ $text-xs-font-size: 1.2rem;
 }
 
 // header 2
+
+@mixin header-2-light {
+    @include typo-maker($h2-font-size, $font-weight-light);
+}
 
 @mixin header-2-regular {
     @include typo-maker($h2-font-size, $font-weight-regular);
