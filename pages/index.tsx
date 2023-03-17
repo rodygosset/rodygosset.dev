@@ -4,8 +4,9 @@ import { GetServerSideProps, NextPage } from 'next'
 import { useEffect } from 'react'
 import { getContactFormContent, getHeroSectionContent, getProjectCardsContent, getSkillCardsContent, getSkillsSectionContent, getWorksSectionContent } from '@utils/data-fetching'
 import { useRouter } from 'next/router'
-import HeroSection from '@components/hero-section'
+import HeroSection from '@components/sections/hero'
 import Header from '@components/layout/header'
+import SkillsSection from '@components/sections/skills'
 
 interface Props {
 	heroSectionContent: Awaited<ReturnType<typeof getHeroSectionContent>>,
@@ -65,6 +66,10 @@ const Home: NextPage<Props> = (
 			<Header/>
 			<main id={styles.main}>
 				<HeroSection content={getLocaleHeroSectionContent()} />
+				<SkillsSection
+					content={getLocaleSkillsSectionContent()}
+					cards={skillCardsContent} 
+				/>
 			</main>
 		</>
 	)

@@ -43,40 +43,14 @@ $text-xs-font-size: 1.2rem;
 
 // hero text
 
-@mixin hero-text-regular {
+@mixin hero-text {
     @include typo-maker($hero-font-size, $font-weight-regular, $highlight-font);
-}
-
-@mixin hero-text-medium {
-    @include typo-maker($hero-font-size, $font-weight-medium, $highlight-font);
-}
-
-
-@mixin hero-text-semibold {
-    @include typo-maker($hero-font-size, $font-weight-semibold, $highlight-font);
-}
-
-@mixin hero-text-bold {
-    @include typo-maker($hero-font-size, $font-weight-bold, $highlight-font);
 }
 
 // header 1
 
-@mixin header-1-regular {
-    @include typo-maker($h1-font-size, $font-weight-regular);
-}
-
-@mixin header-1-medium {
-    @include typo-maker($h1-font-size, $font-weight-medium);
-}
-
-
-@mixin header-1-semibold {
-    @include typo-maker($h1-font-size, $font-weight-semibold);
-}
-
-@mixin header-1-bold {
-    @include typo-maker($h1-font-size, $font-weight-bold);
+@mixin header-1 {
+    @include typo-maker($h1-font-size, $font-weight-regular, $highlight-font);
 }
 
 // header 2

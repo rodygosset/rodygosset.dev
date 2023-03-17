@@ -1,14 +1,15 @@
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import styles from "@styles/components/hero-section.module.scss"
+import styles from "@styles/components/sections/hero.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HeroSectionType } from "@utils/content-types"
 import Link from "next/link";
 import Image from "next/image";
-import EmailBox from "./email-box";
-import Button from "./button";
-import MyMemoji from "./my-memoji";
+import EmailBox from "../email-box";
+import Button from "../button";
+import MyMemoji from "../my-memoji";
 import { motion } from "framer-motion";
 import { fadeIn, slideInRight } from "@utils/framer-motion-animations";
+import ScrollButton from "@components/scroll-button";
 
 interface Props {
     content: HeroSectionType;
@@ -58,20 +59,9 @@ const HeroSection = (
                     />
                 </motion.div>
 
-                <Button
-                    fancy
-                    animateOnHover={false}
-                    onClick={() => {}}>
-                    <Image 
-                        quality={100}
-                        src={'/assets/arrow-down.svg'} 
-                        alt={"Arrow down icon"} 
-                        priority
-                        width={14}
-                        height={14}
-                    />
-                    <span>{ content.buttonText }</span>
-                </Button>
+                <ScrollButton onClick={() => {}}>
+                    { content.buttonText }
+                </ScrollButton>
             </div>
             
         </section>

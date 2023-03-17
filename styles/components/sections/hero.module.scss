@@ -30,7 +30,7 @@
             gap: 10px;
 
             h1 {
-                @include hero-text-regular;
+                @include hero-text;
                 background: $main-gradient;
                 background-clip: text;
                 color: transparent;
