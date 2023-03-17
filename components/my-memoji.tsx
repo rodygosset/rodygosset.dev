@@ -1,4 +1,6 @@
 import styles from "@styles/components/my-memoji.module.scss"
+import { slideInLeft } from "@utils/framer-motion-animations";
+import { motion } from "framer-motion";
 import Image from "next/image"
 
 interface Props {
@@ -27,7 +29,9 @@ const MyMemoji = (
     // render
 
     return (
-        <div className={getClassNames()}>
+        <motion.div 
+            { ...slideInLeft }
+            className={getClassNames()}>
             <Image 
                 quality={100}
                 src={getSource()} 
@@ -39,7 +43,7 @@ const MyMemoji = (
                     top: "auto"
                 }}
             />
-        </div>
+        </motion.div>
     )
 }
 

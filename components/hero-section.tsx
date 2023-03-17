@@ -7,6 +7,8 @@ import Image from "next/image";
 import EmailBox from "./email-box";
 import Button from "./button";
 import MyMemoji from "./my-memoji";
+import { motion } from "framer-motion";
+import { fadeIn, slideInRight } from "@utils/framer-motion-animations";
 
 interface Props {
     content: HeroSectionType;
@@ -28,17 +30,21 @@ const HeroSection = (
                 square
             />
             <div className={styles.textContent}>
-                <div className={styles.greeting}>
+                <motion.div 
+                    { ...slideInRight }
+                    className={styles.greeting}>
                     <p>{content.greeting_start}</p>
                     <h1>{content.full_name}</h1>
                     <p>{content.job_title}</p>
-                </div>
+                </motion.div>
 
                 <MyMemoji className={styles.mobileIllustration}/>
 
-                <p className={styles.intro}>{content.intro}</p>
+                <motion.p { ...fadeIn } className={styles.intro}>{content.intro}</motion.p>
 
-                <div className={styles.links}>
+                <motion.div 
+                    { ...fadeIn }
+                    className={styles.links}>
                     <Link href={content.github_link}>
                         <FontAwesomeIcon icon={faGithub} />
                     </Link>
@@ -50,7 +56,7 @@ const HeroSection = (
                         CTAText={content.email_copy_message}
                         CTASuccessText={content.email_copy_success_message}
                     />
-                </div>
+                </motion.div>
 
                 <Button
                     fancy
