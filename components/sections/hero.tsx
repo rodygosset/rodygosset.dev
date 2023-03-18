@@ -59,7 +59,7 @@ const HeroSection = (
                     />
                 </motion.div>
 
-                <ScrollButton onClick={() => {}}>
+                <ScrollButton sectionId="skills">
                     { content.buttonText }
                 </ScrollButton>
             </div>

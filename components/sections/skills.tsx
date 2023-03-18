@@ -1,9 +1,10 @@
 import { SkillCardType, SkillsSectionType } from "@utils/content-types";
 import styles from "@styles/components/sections/skills.module.scss"
 import { motion } from "framer-motion";
-import { slideInLeft } from "@utils/framer-motion-animations";
+import { slideInDown, slideInLeft, slideInUp } from "@utils/framer-motion-animations";
 import Image from "next/image";
 import ScrollButton from "@components/scroll-button";
+import SkillCard from "@components/cards/skill-card";
 
 interface Props {
     content: SkillsSectionType;
@@ -21,7 +22,7 @@ const SkillsSection = (
     return (
         <section id="skills" className={styles.skillsSection}>
             <section id={styles.sectionIntro}>
-                <h1>{content.section_title}</h1>
+                <motion.h1 { ...slideInDown } >{content.section_title}</motion.h1>
                 <motion.div 
                     { ...slideInLeft }
                     className={styles.illustrationContainer}>
@@ -37,8 +38,8 @@ const SkillsSection = (
                         }}
                     />
                 </motion.div>
-                <p>{content.intro}</p>
-                <ScrollButton onClick={() => {}}>
+                <motion.p { ...slideInUp } >{content.intro}</motion.p>
+                <ScrollButton sectionId="works">
                     { content.buttonText }
                 </ScrollButton>
             </section>
@@ -47,6 +48,11 @@ const SkillsSection = (
                     <h3>{content.header}</h3>
                     <p>{content.header_caption}</p>
                 </div>
+                <ul>
+                {
+                    cards.map(card => <SkillCard key={card.name} data={card} />)
+                }
+                </ul>
             </section>
         </section>
     )

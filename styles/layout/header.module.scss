@@ -17,7 +17,7 @@
     padding: 20px 5vw;
 
     @media (max-width: $bp-md) {
-        padding: 20px 10vw;
+        padding: 20px $mobile-side-padding;
     }
 
 }

@@ -73,7 +73,7 @@
 
     @media (max-width: $bp-md) {
 
-        padding: $mobile-nav-bar-height 10vw 5vh;
+        padding: $mobile-nav-bar-height $mobile-side-padding 5vh;
 
         .desktopIllustration {
             display: none;

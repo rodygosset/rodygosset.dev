@@ -1,17 +1,27 @@
 import Button from "./button"
 import Image from "next/image"
+import { MouseEvent } from "react"
 
 interface Props {
     children: any;
-    onClick: () => void;
+    sectionId: string;
 }
 
 const ScrollButton = (
     {
         children,
-        onClick
+        sectionId
     }: Props
 ) => {
+
+    // handlers
+
+    const handleClick = (e: MouseEvent) => {
+        e.preventDefault()
+        let section = document.getElementById(sectionId)
+        if(!section) return
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
 
     // render
 
@@ -19,7 +29,7 @@ const ScrollButton = (
         <Button
             fancy
             animateOnHover={false}
-            onClick={onClick}>
+            onClick={handleClick}>
             <Image 
                 quality={100}
                 src={'/assets/arrow-down.svg'} 
