@@ -15,6 +15,13 @@
     height: $nav-bar-height;
 
     padding: 20px 5vw;
+    filter: invert(1) ;
+    mix-blend-mode: exclusion;
+
+    &.darkMode {
+        filter: brightness(0) invert(1);
+    }
+    
 
     @media (max-width: $bp-md) {
         padding: 20px $mobile-side-padding;

@@ -3,9 +3,7 @@ import styles from "@styles/components/sections/hero.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HeroSectionType } from "@utils/content-types"
 import Link from "next/link";
-import Image from "next/image";
 import EmailBox from "../email-box";
-import Button from "../button";
 import MyMemoji from "../my-memoji";
 import { motion } from "framer-motion";
 import { fadeIn, slideInRight } from "@utils/framer-motion-animations";
@@ -46,10 +44,10 @@ const HeroSection = (
                 <motion.div 
                     { ...fadeIn }
                     className={styles.links}>
-                    <Link href={content.github_link}>
+                    <Link href={content.github_link} target="_blank">
                         <FontAwesomeIcon icon={faGithub} />
                     </Link>
-                    <Link href={content.linkedin_link}>
+                    <Link href={content.linkedin_link} target="_blank">
                         <FontAwesomeIcon icon={faLinkedin} />
                     </Link>
                     <EmailBox 

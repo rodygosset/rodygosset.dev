@@ -19,8 +19,11 @@ const SkillsSection = (
     }: Props
 ) => {
 
-    const handleCardClick = (cardName: string) => {
-        // todo
+    // utils
+
+    const getSkillXpUnit = (card: SkillCardType) => {
+        if(card.xp_unit == "M") return card.xp_time > 1 ? content.month_unit_label_plural : content.month_unit_label_singular 
+        else return card.xp_time > 1 ? content.year_unit_label_plural : content.year_unit_label_singular
     }
 
     // render
@@ -61,7 +64,7 @@ const SkillsSection = (
                         <SkillCard 
                             key={card.name} 
                             data={card} 
-                            onClick={() => handleCardClick(card.name)} 
+                            unit={getSkillXpUnit(card)}
                         />
                     ))
                 }

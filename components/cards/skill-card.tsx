@@ -8,13 +8,13 @@ import { faHourglass, faHourglassHalf } from "@fortawesome/free-solid-svg-icons"
 
 interface Props {
     data: SkillCardType;
-    onClick: () => void;
+    unit: string;
 }
 
 const SkillCard = (
     {
         data,
-        onClick
+        unit
     }: Props
 ) => {
 
@@ -39,7 +39,7 @@ const SkillCard = (
             <p>{data.name}</p>
             <p className={styles.xp}>
                 <FontAwesomeIcon icon={faHourglassHalf}/>
-                <span>{ data.xp_time }</span>
+                <span>{ data.xp_time } { unit } </span>
             </p>
         </li>
     )

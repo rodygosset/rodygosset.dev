@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import HeroSection from '@components/sections/hero'
 import Header from '@components/layout/header'
 import SkillsSection from '@components/sections/skills'
+import WorksSection from '@components/sections/works'
 
 interface Props {
 	heroSectionContent: Awaited<ReturnType<typeof getHeroSectionContent>>,
@@ -69,6 +70,10 @@ const Home: NextPage<Props> = (
 				<SkillsSection
 					content={getLocaleSkillsSectionContent()}
 					cards={skillCardsContent} 
+				/>
+				<WorksSection 
+					content={getLocaleWorksSectionContent()} 
+					projects={getLocaleProjectCardsContent()}
 				/>
 			</main>
 		</>
