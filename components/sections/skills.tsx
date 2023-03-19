@@ -19,6 +19,12 @@ const SkillsSection = (
     }: Props
 ) => {
 
+    const handleCardClick = (cardName: string) => {
+        // todo
+    }
+
+    // render
+
     return (
         <section id="skills" className={styles.skillsSection}>
             <section id={styles.sectionIntro}>
@@ -47,10 +53,17 @@ const SkillsSection = (
                 <div className={styles.sectionTitle}>
                     <h3>{content.header}</h3>
                     <p>{content.header_caption}</p>
+                    <p className={styles.skillCardsCTA}>{content.skill_card_cta_text}</p>
                 </div>
                 <ul>
                 {
-                    cards.map(card => <SkillCard key={card.name} data={card} />)
+                    cards.map(card => (
+                        <SkillCard 
+                            key={card.name} 
+                            data={card} 
+                            onClick={() => handleCardClick(card.name)} 
+                        />
+                    ))
                 }
                 </ul>
             </section>

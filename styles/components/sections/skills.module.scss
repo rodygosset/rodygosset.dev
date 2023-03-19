@@ -65,6 +65,10 @@
             p {
                 @include text-md-regular;
                 color: $black-400;
+
+                &.skillCardsCTA {
+                    color: $primary;
+                }
             }
             
         }

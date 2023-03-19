@@ -35,6 +35,26 @@ export default {
             title: "Header Caption"
         },
         {
+            name: "year_unit_label_singular",
+            type: "string",
+            title: "Year Unit Label Singular"
+        },
+        {
+            name: "year_unit_label_plural",
+            type: "string",
+            title: "Year Unit Label Plural"
+        },
+        {
+            name: "month_unit_label_singular",
+            type: "string",
+            title: "Month Unit Label Singular"
+        },
+        {
+            name: "month_unit_label_plural",
+            type: "string",
+            title: "Month Unit Label Plural"
+        },
+        {
             name: "skill_card_cta_text",
             type: "string",
             title: "Skill Card CTA Text"

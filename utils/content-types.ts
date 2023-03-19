@@ -22,6 +22,10 @@ export interface SkillsSectionType {
     buttonText: string;
     header: string;
     header_caption: string;
+    year_unit_label_singular: string;
+    year_unit_label_plural: string;
+    month_unit_label_singular: string;
+    month_unit_label_plural: string;
     skill_card_cta_text: string;
 }
 
