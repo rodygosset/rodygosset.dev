@@ -6,7 +6,7 @@ import Link from "next/link";
 import EmailBox from "../email-box";
 import MyMemoji from "../my-memoji";
 import { motion } from "framer-motion";
-import { fadeIn, slideInRight } from "@utils/framer-motion-animations";
+import { fadeIn, slideInDown, slideInRight } from "@utils/framer-motion-animations";
 import ScrollButton from "@components/scroll-button";
 
 interface Props {
@@ -30,7 +30,7 @@ const HeroSection = (
             />
             <div className={styles.textContent}>
                 <motion.div 
-                    { ...slideInRight }
+                    { ...slideInDown }
                     className={styles.greeting}>
                     <p>{content.greeting_start}</p>
                     <h1>{content.full_name}</h1>
