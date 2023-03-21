@@ -30,7 +30,7 @@ const HeroSection = (
             />
             <div className={styles.textContent}>
                 <motion.div 
-                    { ...slideInDown }
+                    { ...slideInRight }
                     className={styles.greeting}>
                     <p>{content.greeting_start}</p>
                     <h1>{content.full_name}</h1>
