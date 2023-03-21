@@ -6,15 +6,17 @@ import Link from "next/link";
 import EmailBox from "../email-box";
 import MyMemoji from "../my-memoji";
 import { motion } from "framer-motion";
-import { fadeIn, slideInDown, slideInRight } from "@utils/framer-motion-animations";
+import { fadeIn, slideInRight } from "@utils/framer-motion-animations";
 import ScrollButton from "@components/scroll-button";
 
 interface Props {
+    id: string;
     content: HeroSectionType;
 }
 
 const HeroSection = (
     {
+        id,
         content
     }: Props
 ) => {
@@ -23,7 +25,7 @@ const HeroSection = (
     // render
 
     return (
-        <section id="hero" className={styles.heroSection}>
+        <section id={id} className={styles.heroSection}>
             <MyMemoji 
                 className={styles.desktopIllustration}
                 square

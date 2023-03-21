@@ -7,6 +7,7 @@ import ScrollButton from "@components/scroll-button";
 import SkillCard from "@components/cards/skill-card";
 
 interface Props {
+    id: string;
     content: SkillsSectionType;
     cards: SkillCardType[];
 }
@@ -14,6 +15,7 @@ interface Props {
 
 const SkillsSection = (
     {
+        id,
         content,
         cards
     }: Props
@@ -29,7 +31,7 @@ const SkillsSection = (
     // render
 
     return (
-        <section id="skills" className={styles.skillsSection}>
+        <section id={id} className={styles.skillsSection}>
             <section id={styles.sectionIntro}>
                 <motion.h1 { ...slideInDown } >{content.section_title}</motion.h1>
                 <motion.div 

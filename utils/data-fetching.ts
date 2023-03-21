@@ -1,5 +1,5 @@
 import sanityClient from "client"
-import { ContactFormType, HeroSectionType, ProjectCardType, SkillCardType, SkillsSectionType, WorksSectionType } from "./content-types"
+import { ContactFormType, HeroSectionType, NavType, ProjectCardType, SkillCardType, SkillsSectionType, WorksSectionType } from "./content-types"
 
 
 export const getSectionContent = async <T>(type: string) => {
@@ -14,6 +14,8 @@ export const getSectionContent = async <T>(type: string) => {
 		fr: contentFR[0]
 	}
 }
+
+export const getNavContent = () => getSectionContent<NavType>("nav")
 
 export const getHeroSectionContent = () => getSectionContent<HeroSectionType>("hero_section")
 

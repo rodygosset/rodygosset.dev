@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '@styles/pages/home.module.scss'
 import { GetServerSideProps, NextPage } from 'next'
 import { useEffect } from 'react'
-import { getContactFormContent, getHeroSectionContent, getProjectCardsContent, getSkillCardsContent, getSkillsSectionContent, getWorksSectionContent } from '@utils/data-fetching'
+import { getContactFormContent, getHeroSectionContent, getNavContent, getProjectCardsContent, getSkillCardsContent, getSkillsSectionContent, getWorksSectionContent } from '@utils/data-fetching'
 import { useRouter } from 'next/router'
 import HeroSection from '@components/sections/hero'
 import Header from '@components/layout/header'
@@ -10,6 +10,7 @@ import SkillsSection from '@components/sections/skills'
 import WorksSection from '@components/sections/works'
 
 interface Props {
+	navContent: Awaited<ReturnType<typeof getNavContent>>
 	heroSectionContent: Awaited<ReturnType<typeof getHeroSectionContent>>,
 	skillsSectionContent: Awaited<ReturnType<typeof getSkillsSectionContent>>,
 	skillCardsContent: Awaited<ReturnType<typeof getSkillCardsContent>>,
@@ -20,6 +21,7 @@ interface Props {
 
 const Home: NextPage<Props> = (
 	{
+		navContent,
 		heroSectionContent,
 		skillsSectionContent,
 		skillCardsContent,
@@ -49,11 +51,16 @@ const Home: NextPage<Props> = (
 	// the following functions are simple helpers to get locale dependent content
 	// that we can directly pass down to our section components
 
+	const getLocaleNavContent = () => locale == "FR" ? navContent.fr : navContent.en 
 	const getLocaleHeroSectionContent = () => locale == "FR" ? heroSectionContent.fr : heroSectionContent.en
 	const getLocaleSkillsSectionContent = () => locale == "FR" ? skillsSectionContent.fr : skillsSectionContent.en
 	const getLocaleWorksSectionContent = () => locale == "FR" ? worksSectionContent.fr : worksSectionContent.en
 	const getLocaleProjectCardsContent = () => locale == "FR" ? projectCardsContent.fr : projectCardsContent.en
 	const getLocaleContactFormContent = () => locale == "FR" ? contactFormContent.fr : contactFormContent.en
+
+
+	// @ts-ignore
+	const getSectionId = (section: string) => getLocaleNavContent()[`${section}_section_id`]
 
 	// render
 
@@ -64,14 +71,16 @@ const Home: NextPage<Props> = (
 				<meta name="description" content="Rody Gosset's portfolio - Web developper & designer" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<Header/>
+			<Header content={getLocaleNavContent()} />
 			<main id={styles.main}>
-				<HeroSection content={getLocaleHeroSectionContent()} />
+				<HeroSection id={getSectionId("hero")} content={getLocaleHeroSectionContent()} />
 				<SkillsSection
+					id={getSectionId("skills")}
 					content={getLocaleSkillsSectionContent()}
 					cards={skillCardsContent} 
 				/>
 				<WorksSection 
+					id={getSectionId("works")}
 					content={getLocaleWorksSectionContent()} 
 					projects={getLocaleProjectCardsContent()}
 				/>
@@ -90,6 +99,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
   
 	return {
 		props: {
+			navContent: await getNavContent(),
 			heroSectionContent: await getHeroSectionContent(),
 			skillsSectionContent: await getSkillsSectionContent(),
 			skillCardsContent: await getSkillCardsContent(),

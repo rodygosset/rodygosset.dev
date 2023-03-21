@@ -5,12 +5,14 @@ import { fadeIn, slideInDown, slideInRight } from "@utils/framer-motion-animatio
 
 
 interface Props {
+    id: string;
     content: WorksSectionType;
     projects: ProjectCardType[];
 }
 
 const WorksSection = (
     {
+        id,
         content
     }: Props
 ) => {
@@ -20,7 +22,7 @@ const WorksSection = (
     // render
 
     return (
-        <section id="works" className={styles.worksSection}>
+        <section id={id} className={styles.worksSection}>
             <div className={styles.sectionIntro}>
                 <motion.h1 { ...slideInDown }>{content.section_title}</motion.h1>
                 <div className={styles.heroText}>

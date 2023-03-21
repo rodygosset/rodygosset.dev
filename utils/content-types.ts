@@ -1,6 +1,20 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 
+export interface NavType {
+    lang: "EN" | "FR";
+    hero_section_label: string;
+    hero_section_id: string;
+    skills_section_label: string;
+    skills_section_id: string;
+    works_section_label: string;
+    works_section_id: string;
+    contact_section_label: string;
+    contact_section_id: string;
+    lang_button_text: string;
+    resume_link_text: string;
+}
+
 export interface HeroSectionType {
     lang: "EN" | "FR";
     greeting_start: string;

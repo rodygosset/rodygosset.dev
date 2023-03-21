@@ -3,28 +3,245 @@
 @import "@styles/abstracts/_colors.scss";
 @import "@styles/abstracts/_variables.scss";
 
-#header {
+#headerContainer {
 
-    @include flex-container(row, nowrap, space-between, center);
+    transition: all 400ms ease-in-out;
 
-    top: 0;
-    left: 0;
-    position: fixed;
-    z-index: 999;
-    width: 100vw;
-    height: $nav-bar-height;
 
-    padding: 20px 5vw;
-    filter: invert(1) ;
-    mix-blend-mode: exclusion;
+    // darken & blur the page when the nav is open
+    
+    &.navOpen {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 500;
+        background: $black-600;
+        backdrop-filter: blur(7px);
 
-    &.darkMode {
-        filter: brightness(0) invert(1);
+    }
+
+    #header {
+
+        @include flex-container(row, nowrap, space-between, center);
+    
+        top: 0;
+        left: 0;
+        position: fixed;
+        z-index: 400;
+        width: 100vw;
+        height: $nav-bar-height;
+    
+        padding: 20px 5vw;
+        filter: invert(1) ;
+        mix-blend-mode: exclusion;
+
+        button {
+            transition: all 400ms ease-in-out;
+        }
+    
+        &.darkMode {
+            filter: brightness(0) invert(1);
+        }
+    
+        &.navOpen {
+            filter: none;
+            mix-blend-mode: normal;
+    
+            svg path {
+                fill: $black;
+            }
+    
+            &.darkMode {
+                svg path {
+                    fill: $white-400;
+                }
+            }
+
+            button {
+                opacity: 0;
+            }
+        }
+        
+    
+        @media (max-width: $bp-md) {
+            padding: 20px $mobile-side-padding;
+        }
     }
     
+    #navContainer {
+    
+    
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 60vw;
+        height: 100vh;
+        z-index: -1;
 
-    @media (max-width: $bp-md) {
-        padding: 20px $mobile-side-padding;
+        &.navOpen {
+            z-index: 500;
+        }
+
+    
+    
+        transition: all 400ms ease-in-out;
+    
+    
+        
+    
+        nav {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+    
+            height: 100vh;
+            width: 60vw;
+    
+            max-width: 700px;
+    
+            padding: calc($nav-bar-height + 30px) 5vw $nav-bar-height;
+    
+            transition: all 400ms ease-in-out;
+    
+            background: $white;
+    
+            box-shadow: -10px 15px 60px $black-200;
+    
+    
+            &.hidden {
+    
+                right: -100vw;
+            }
+    
+            button svg {
+    
+                position: absolute;
+                top: 20px;
+                right: 5vw;
+    
+                color: $black-400;
+                width: 25px;
+                height: 25px;
+    
+                &:hover {
+                    color: $black;
+                }
+            }
+    
+            ul {
+                @include reset-list;
+                @include flex-container(column, nowrap, center, stretch);
+                gap: 40px;
+                height: 100%;
+                width: 100%;
+    
+                li {
+                    @include flex-container(row, nowrap, space-between, flex-end);
+                    width: 100%;
+    
+                    span, a {
+                        color: $black-400;
+                    }
+    
+                    span {
+                        @include text-md-regular;
+                        margin-bottom: 7px;
+                    }
+    
+                    a {
+                        @include header-1;
+                    }
+    
+                    &:hover, &.current {
+                        span, a {
+                            color: $black;
+                        }
+
+                        &.link a {
+                            border-color: $black;
+                        }
+                    }
+
+                    &.link {
+                        justify-content: flex-end;
+
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        a {
+                            @include flex-container(row, nowrap, center, center);
+                            gap: 10px;
+                            @include button-text;
+                            padding: 10px 20px !important;
+                            border: 1px solid $black-100;
+                        }
+
+                    }
+                }
+            }
+    
+            &.darkMode {
+                background: $black-alt;
+
+                box-shadow: -10px 15px 60px $black-600;
+    
+                button svg {
+                    color: $white-400;
+    
+                    &:hover {
+                        color: $white;
+                    }
+                }
+                
+                ul li {
+                    span, a {
+                        color: $white-400;
+                    }
+    
+                    &:hover, &.current {
+                        span, a {
+                            color: $white;
+                        }
+
+                        &.link a {
+                            border-color: $white;
+                        }
+                    }
+
+                    &.link a {
+                        border-color: $white-100;
+                    }
+                }
+    
+            }
+    
+    
+            @media (max-width: $bp-sm) {
+                ul li a {
+                    font-size: $h2-font-size;
+                }
+
+                ul li.link a {
+                    @include text-md-regular;
+                }
+            }
+        }
+
+        @media (max-width: $bp-md) {
+
+            width: 100vw;
+
+            nav {
+                width: 100vw;
+                max-width: initial;
+                padding: 20px $mobile-side-padding;
+            }
+        }
     }
 
 }
