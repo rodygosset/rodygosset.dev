@@ -13,6 +13,7 @@ export interface NavType {
     contact_section_id: string;
     lang_button_text: string;
     resume_link_text: string;
+    resume_link: string;
 }
 
 export interface HeroSectionType {

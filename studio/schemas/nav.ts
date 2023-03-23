@@ -58,6 +58,11 @@ export default {
             type: "string",
             title: "Resume Link Text"
         },
+        {
+            name: "resume_link",
+            type: "string",
+            title: "Resume Link"
+        },
     ]
 
 }

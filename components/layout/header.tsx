@@ -5,8 +5,9 @@ import Link from "next/link"
 import { ReactSVG } from "react-svg"
 import { useEffect, useState } from "react"
 import { NavType } from "@utils/content-types"
-import { faDownload, faFileText, faLanguage, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { faDownload, faLanguage, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useRouter } from "next/router"
 
 interface NavItem {
     label: string;
@@ -108,6 +109,12 @@ const Header = (
 
     // utils
 
+    const router = useRouter()
+
+    useEffect(() => console.log(router.locale), [])
+
+    const getLocale = () => router.locale == "fr" ? "en-US" : "fr"
+
     const openNav = () => setNavOpen(true)
     const closeNav = () => setNavOpen(false)
 
@@ -182,13 +189,13 @@ const Header = (
                         ))
                     }
                     <li className={styles.link}>
-                        <Link href="/" onClick={closeNav}>
+                        <Link href="/" onClick={closeNav} locale={getLocale()}>
                             <FontAwesomeIcon icon={faLanguage}/>
                             { content.lang_button_text }
                         </Link>
                     </li>
                     <li className={styles.link} onClick={closeNav}>
-                        <Link href="/">
+                        <Link href={content.resume_link} target="_blank" locale="en-US">
                             <FontAwesomeIcon icon={faDownload}/>
                             { content.resume_link_text }
                         </Link>

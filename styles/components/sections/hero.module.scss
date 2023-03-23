@@ -11,6 +11,8 @@
     background-size: cover;
     background-position: center;
 
+    overflow-x: hidden;
+
     @include flex-container(row, nowrap, center, center);
     min-width: fit-content;
     width: 100vw;

@@ -33,7 +33,7 @@ const SkillsSection = (
     return (
         <section id={id} className={styles.skillsSection}>
             <section id={styles.sectionIntro}>
-                <motion.h1 { ...slideInDown } >{content.section_title}</motion.h1>
+                <motion.h1 { ...slideInDown }>{content.section_title}</motion.h1>
                 <motion.div 
                     { ...slideInLeft }
                     className={styles.illustrationContainer}>
