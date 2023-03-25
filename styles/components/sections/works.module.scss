@@ -61,12 +61,10 @@
     }
 
     .heroProjectContainer {
-        flex: 1;
 
-        h1 {
-            @include hero-text;
-            color: $white;
-        }
+        @include reset-list;
+        @include flex-container(column, nowrap, center, center);
+        flex: 1;
     }
 
 

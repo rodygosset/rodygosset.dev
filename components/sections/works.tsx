@@ -2,7 +2,8 @@ import { ProjectCardType, WorksSectionType } from "@utils/content-types";
 import styles from "@styles/components/sections/works.module.scss"
 import { motion } from "framer-motion";
 import { fadeIn, slideInDown, slideInRight } from "@utils/framer-motion-animations";
-import Image from "next/image";
+import { useEffect } from "react"
+import ProjectCard from "@components/cards/project-card";
 
 interface Props {
     id: string;
@@ -13,11 +14,12 @@ interface Props {
 const WorksSection = (
     {
         id,
-        content
+        content,
+        projects
     }: Props
 ) => {
 
-
+    const getFirstProject = () => projects.find(project => project.name == "GEMEX") || projects[0]
 
     // render
 
@@ -32,9 +34,12 @@ const WorksSection = (
                         <motion.p { ...slideInRight }>{content.hero_text_caption_2}</motion.p>    
                     </div>
                 </div>
-                <div className={styles.heroProjectContainer}>
-                    <h1>GEMEX</h1>
-                </div>
+                <ul className={styles.heroProjectContainer}>
+                    <ProjectCard 
+                        buttonText={content.project_card_cta_text}
+                        content={getFirstProject()}
+                    />
+                </ul>
             </section>
         </div>
     )

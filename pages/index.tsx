@@ -70,6 +70,10 @@ const Home: NextPage<Props> = (
 				<title>Rody Gosset&apos;s portfolio</title>
 				<meta name="description" content="Rody Gosset's portfolio - Web developper & designer" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<link rel="shortcut icon" href="favicon/favicon.svg" type="img/svg" />
+				<link rel="apple-touch-icon" sizes="180x180" href="/favicon/favicon-180x180.png" />
+				<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"/>
+				<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
 			</Head>
 			<Header content={getLocaleNavContent()} />
 			<main id={styles.main}>
