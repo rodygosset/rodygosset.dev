@@ -51,7 +51,7 @@ const ProjectCard = (
                 <h3>{ content.title }</h3>
                 <Link href={getProjectLink()} onClick={e => e.stopPropagation()}>
                     <FontAwesomeIcon icon={faArrowRight}/>
-                    { buttonText }
+                    <span>{ buttonText }</span>
                 </Link>
                 <p>{ content.description }</p>
             </div>

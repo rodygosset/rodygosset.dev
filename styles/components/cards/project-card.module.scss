@@ -29,6 +29,7 @@
 
         h3 {
             @include header-3-regular;
+            color: $white;
         }
 
         a {
@@ -41,6 +42,10 @@
             border-radius: 0px;
 
             border: 1px solid $white-100;
+
+            span {
+                white-space: nowrap;
+            }
             
         }
 

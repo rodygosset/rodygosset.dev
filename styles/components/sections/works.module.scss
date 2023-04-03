@@ -90,3 +90,20 @@
     }
 
 }
+
+.columnsContainer {
+    @include flex-container(row, nowrap, space-between, flex-start);
+    gap: 60px;
+    padding: 0 5vw 5vh;
+    overflow-x: hidden;
+
+    ul {
+        @include reset-list;
+        @include flex-container(column, nowrap, flex-start, center);
+        gap: 60px;
+    }
+
+    @media (max-width: $bp-md) {
+        @include flex-container(column, nowrap, flex-start, center);
+    }
+}

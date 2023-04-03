@@ -1,0 +1,38 @@
+@import "@styles/base/_reset.scss";
+@import "@styles/base/_mixins.scss";
+@import "@styles/base/_typography.scss";
+@import "@styles/abstracts/_colors.scss";
+@import "@styles/abstracts/_variables.scss";
+
+.contactSection {
+
+    background: $black-alt;
+
+    @include flex-container(row, nowrap, center, center);
+    padding: 5vh 5vw;
+    width: 100vw;
+    min-height: 100vh;
+    height: fit-content;
+
+    overflow-x: hidden;
+
+    color: $white;
+
+    .sectionTitle {
+
+        @include flex-container(column, nowrap, flex-start, flex-start);
+        gap: 15px;
+        
+        h1 {
+            @include header-1;
+        }
+    
+        p {
+            @include text-md-regular;
+            color: $white-400;
+        }
+
+    }
+
+}
+

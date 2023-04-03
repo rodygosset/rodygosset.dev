@@ -8,6 +8,7 @@ import HeroSection from '@components/sections/hero'
 import Header from '@components/layout/header'
 import SkillsSection from '@components/sections/skills'
 import WorksSection from '@components/sections/works'
+import ContactSection from '@components/sections/contact'
 
 interface Props {
 	navContent: Awaited<ReturnType<typeof getNavContent>>
@@ -44,9 +45,9 @@ const Home: NextPage<Props> = (
 
 	const locale = determineLocale()
 
-	useEffect(() => console.log("router locale => " + router.locale), [router.locale])
+	// useEffect(() => console.log("router locale => " + router.locale), [router.locale])
 
-	useEffect(() => console.log("current locale => " + locale), [locale])
+	// useEffect(() => console.log("current locale => " + locale), [locale])
 
 	// the following functions are simple helpers to get locale dependent content
 	// that we can directly pass down to our section components
@@ -87,6 +88,10 @@ const Home: NextPage<Props> = (
 					id={getSectionId("works")}
 					content={getLocaleWorksSectionContent()} 
 					projects={getLocaleProjectCardsContent()}
+				/>
+				<ContactSection
+					id={getSectionId("contact")}
+					content={getLocaleContactFormContent()}
 				/>
 			</main>
 		</>
