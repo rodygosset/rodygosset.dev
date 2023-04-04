@@ -33,6 +33,13 @@ const ContactSection = (
 
     const [errorMessage, setErrorMessage] = useState<string>()
 
+    const clearFormData = () => {
+        setName("")
+        setEmail("")
+        setPhoneNumber("")
+        setMessage("")
+    }
+
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         // prevent page refresh
         e.preventDefault();
@@ -51,7 +58,9 @@ const ContactSection = (
         .then(res => res.json())
         .then(res => {
             if (res.code !== 200) {
-            setErrorMessage(res.message);
+                setErrorMessage(res.message)
+            } else {
+                clearFormData()
             }
         })
         .catch(setErrorMessage);
