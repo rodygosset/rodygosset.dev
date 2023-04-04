@@ -7,7 +7,7 @@ import { MouseEventHandler } from "react";
 
 interface Props {
     children: any;
-    onClick: (event?: any) => void;
+    onClick?: (event?: any) => void;
     onMouseOver?: (event?: any) => void;
     onMouseLeave?: (event?: any) => void;
     type?: "button" | "submit" | undefined;
@@ -61,7 +61,7 @@ const Button = ({
 
     const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
         event.preventDefault()
-        if(active) onClick(event)
+        if(active && onClick) onClick(event)
     }
 
     return (

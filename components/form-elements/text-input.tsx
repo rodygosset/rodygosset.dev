@@ -10,7 +10,7 @@ interface Props {
     name?: string;
     defaultValue?: string;
     currentValue?: string;
-    password?: boolean;
+    type?: string;
     isTextArea?: boolean;
     required?: boolean;
     isInErrorState?: boolean;
@@ -23,7 +23,7 @@ const TextInput = ({
         name,
         defaultValue, 
         currentValue, 
-        password,
+        type,
         isTextArea,
         required,
         isInErrorState
@@ -58,7 +58,7 @@ const TextInput = ({
             <input 
                 className={getClassNames()}
                 name={name ? name : undefined}
-                type={password ? "password" : "text"}
+                type={type}
                 placeholder={placeholder ? placeholder : undefined}
                 onChange={handleChange}
                 defaultValue={defaultValue ? defaultValue : undefined}

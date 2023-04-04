@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource/josefin-sans": "^4.5.12",
+    "@formcarry/react": "^1.0.4",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
