@@ -19,6 +19,11 @@ export default {
             title: "Caption"
         },
         {
+            name: "name_label",
+            type: "string",
+            title: "Name Field Label"
+        },
+        {
             name: "email_label",
             type: "string",
             title: "Email Field Label"

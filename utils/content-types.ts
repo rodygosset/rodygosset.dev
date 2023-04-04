@@ -64,6 +64,7 @@ export interface ContactFormType {
     lang: "EN" | "FR";
     section_title: string;
     caption: string;
+    name_label: string;
     email_label: string;
     phone_label: string;
     message_label: string;

@@ -2,7 +2,6 @@ import { ProjectCardType, WorksSectionType } from "@utils/content-types";
 import styles from "@styles/components/sections/works.module.scss"
 import { motion } from "framer-motion";
 import { fadeIn, slideInDown, slideInLeft, slideInRight } from "@utils/framer-motion-animations";
-import { useEffect } from "react"
 import ProjectCard from "@components/cards/project-card";
 
 interface Props {
@@ -23,11 +22,15 @@ const WorksSection = (
 
     const getFirstProject = () => projects.find(project => project.name == "GEMEX") || projects[0]
 
-    const getLeftColProjects = () => projects.filter((p, index) => index % 2 == 1 && p.name != "GEMEX")
+    const getOddIdxProjects = () => projects.filter((p, index) => index % 2 == 1 && p.name != "GEMEX")
 
-    const getRightColProjects = () => projects.filter((p, index) => index % 2 == 0 && p.name != "GEMEX")
+    const getEvenIdxProjects = () => projects.filter((p, index) => index % 2 == 0 && p.name != "GEMEX")
 
 
+    const getLeftColProjects = () => getOddIdxProjects().length >= getEvenIdxProjects().length ? getOddIdxProjects() : getEvenIdxProjects()
+    const getRightColProjects = () => getOddIdxProjects().length >= getEvenIdxProjects().length ? getEvenIdxProjects() : getOddIdxProjects()
+
+    
     // render
 
     return (

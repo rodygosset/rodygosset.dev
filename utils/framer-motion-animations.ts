@@ -45,7 +45,7 @@ export const slideInRight: HTMLMotionProps<'div'> = {
 export const slideInUp: HTMLMotionProps<'div'> = {
     initial: {
         opacity: 0,
-        y: 200
+        y: 100
     },
     whileInView: {
         opacity: 1,
@@ -59,7 +59,7 @@ export const slideInUp: HTMLMotionProps<'div'> = {
 export const slideInDown: HTMLMotionProps<'div'> = {
     initial: {
         opacity: 0,
-        y: -200
+        y: -100
     },
     whileInView: {
         opacity: 1,
