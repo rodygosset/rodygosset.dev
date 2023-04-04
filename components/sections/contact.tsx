@@ -5,10 +5,9 @@ import { fadeIn, slideInUp } from "@utils/framer-motion-animations";
 import FieldContainer from "@components/form-elements/field-container";
 import Label from "@components/form-elements/label";
 import TextInput from "@components/form-elements/text-input";
-import { FormEvent, useEffect, useRef, useState } from "react"
+import { FormEvent, useState } from "react"
 import Button from "@components/button";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { useForm } from "@formcarry/react";
+import {  faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
     id: string;
@@ -22,6 +21,8 @@ const ContactSection = (
     }: Props
 ) => {
 
+    const formID = 'sZWDKrg7Jb'
+
     // form data
 
     const [name, setName] = useState("")
@@ -29,9 +30,12 @@ const ContactSection = (
     const [phoneNumber, setPhoneNumber] = useState("")
     const [message, setMessage] = useState("")
 
-    const formID = 'sZWDKrg7Jb'
+
+    // let the user know in case there's an error
 
     const [errorMessage, setErrorMessage] = useState<string>()
+
+    // clear form fields
 
     const clearFormData = () => {
         setName("")
@@ -40,11 +44,13 @@ const ContactSection = (
         setMessage("")
     }
 
+    // post form data
+
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         // prevent page refresh
         e.preventDefault();
     
-        // send request to the submit form data
+        // send request to the formcarry submit endpoint
         fetch(`https://formcarry.com/s/${formID}`, {
             method: "POST",
             headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -56,16 +62,9 @@ const ContactSection = (
             })
         })
         .then(res => res.json())
-        .then(res => {
-            if (res.code !== 200) {
-                setErrorMessage(res.message)
-            } else {
-                clearFormData()
-            }
-        })
+        .then(res => res.code == 200 ? clearFormData() : setErrorMessage(res.message))
         .catch(setErrorMessage);
     }
-
 
     // render
 
