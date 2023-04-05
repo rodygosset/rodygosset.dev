@@ -69,6 +69,7 @@ export interface ContactFormType {
     phone_label: string;
     message_label: string;
     submit_button_text: string;
+    validation_error_message: string;
 }
 
 export interface ProjectCardType {

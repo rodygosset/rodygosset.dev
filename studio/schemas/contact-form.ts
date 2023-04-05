@@ -43,5 +43,10 @@ export default {
             type: "string",
             title: "Submit Button Text"
         },
+        {
+            name: "validation_error_message",
+            type: "string",
+            title: "Validation Error Message"
+        },
     ]
 }

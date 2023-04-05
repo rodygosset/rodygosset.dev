@@ -9,4 +9,8 @@
     padding: 20px;
     border: 1px solid $white-100;
     width: 100%;
+
+    &.error {
+        border-color: $error;
+    }
 }

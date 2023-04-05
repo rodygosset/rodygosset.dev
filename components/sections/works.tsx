@@ -20,12 +20,11 @@ const WorksSection = (
 
     // utils
 
-    const getFirstProject = () => projects.find(project => project.name == "GEMEX") || projects[0]
+    const getFirstProject = () => projects.find(project => project.name == "gemex") || projects[0]
 
-    const getOddIdxProjects = () => projects.filter((p, index) => index % 2 == 1 && p.name != "GEMEX")
+    const getOddIdxProjects = () => projects.filter((p, index) => index % 2 == 1 && p.name != "gemex")
 
-    const getEvenIdxProjects = () => projects.filter((p, index) => index % 2 == 0 && p.name != "GEMEX")
-
+    const getEvenIdxProjects = () => projects.filter((p, index) => index % 2 == 0 && p.name != "gemex")
 
     const getLeftColProjects = () => getOddIdxProjects().length >= getEvenIdxProjects().length ? getOddIdxProjects() : getEvenIdxProjects()
     const getRightColProjects = () => getOddIdxProjects().length >= getEvenIdxProjects().length ? getEvenIdxProjects() : getOddIdxProjects()
@@ -66,7 +65,7 @@ const WorksSection = (
                 }
                 </motion.ul>
                 { /* @ts-ignore */}
-                <motion.ul { ...slideInRight }>
+                <motion.ul { ...slideInRight } className={styles.rightCol}>
                 {
                     getRightColProjects().map((project, index) => (
                         <ProjectCard 

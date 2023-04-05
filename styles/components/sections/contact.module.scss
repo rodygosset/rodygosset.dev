@@ -31,6 +31,10 @@
         p {
             @include text-md-regular;
             color: $white-400;
+
+            &.error {
+                color: $error;
+            }
         }
 
         h1, p {
@@ -42,6 +46,7 @@
     form {
         @include flex-container(column, nowrap, flex-start, stretch);
         width: 100%;
+        max-width: $bp-lg;
         padding: 5vh 5vw;
         gap: 30px;
 

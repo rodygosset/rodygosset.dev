@@ -33,7 +33,8 @@ const ContactSection = (
 
     // let the user know in case there's an error
 
-    const [errorMessage, setErrorMessage] = useState<string>()
+    const [errorMessage, setErrorMessage] = useState<string | undefined>()
+    const [errorFields, setErrorFields] = useState<string[]>([])
 
     // clear form fields
 
@@ -42,13 +43,40 @@ const ContactSection = (
         setEmail("")
         setPhoneNumber("")
         setMessage("")
+        setErrorFields([])
+        setErrorMessage(undefined)
+    }
+
+    // validate form data before submitting
+
+    const validate = () => {
+        // make sure no fields is empty
+        // as they're all required
+
+        const tmpErrFields: string[] = []
+
+        if(!name) tmpErrFields.push("fullName")
+        if(!email) tmpErrFields.push("email")
+        if(!phoneNumber) tmpErrFields.push("tel")
+        if(!message) tmpErrFields.push("message")
+
+        setErrorFields(tmpErrFields)
+
+        return tmpErrFields.length == 0
     }
 
     // post form data
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         // prevent page refresh
-        e.preventDefault();
+        e.preventDefault()
+
+        // don't submit the form if validation fails
+
+        if(!validate()) {
+            setErrorMessage(content.validation_error_message)
+            return
+        }
     
         // send request to the formcarry submit endpoint
         fetch(`https://formcarry.com/s/${formID}`, {
@@ -73,10 +101,16 @@ const ContactSection = (
             <div className={styles.sectionTitle}>
                 <motion.h1 { ...fadeIn } >{content.section_title}</motion.h1>
                 <motion.p { ...slideInUp } >{ content.caption }</motion.p>
+                {
+                    typeof errorMessage !== "undefined" ?
+                    <p className={styles.error}>{ errorMessage }</p>
+                    :
+                    <></>
+                }
             </div>
             { /* @ts-ignore */ }
             <motion.form { ...slideInUp } onSubmit={handleSubmit}>
-                <FieldContainer>
+                <FieldContainer isInErrorState={ errorFields.includes("fullName") }>
                     <Label>{ content.name_label }</Label>
                     <TextInput
                         name="fullName"
@@ -87,7 +121,7 @@ const ContactSection = (
                     />
                 </FieldContainer>
                 <div className={styles.row}>
-                    <FieldContainer>
+                    <FieldContainer isInErrorState={ errorFields.includes("email") }>
                         <Label>{ content.email_label }</Label>
                         <TextInput
                             name="email"
@@ -98,7 +132,7 @@ const ContactSection = (
                             required
                         />
                     </FieldContainer>
-                    <FieldContainer>
+                    <FieldContainer isInErrorState={ errorFields.includes("tel") }>
                         <Label>{ content.phone_label }</Label>
                         <TextInput
                             name="tel"
@@ -110,7 +144,7 @@ const ContactSection = (
                         />
                     </FieldContainer>
                 </div>
-                <FieldContainer>
+                <FieldContainer isInErrorState={ errorFields.includes("message") }>
                     <Label>{ content.message_label }</Label>
                     <TextInput
                         name="message"
