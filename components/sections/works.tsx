@@ -1,7 +1,7 @@
 import { ProjectCardType, WorksSectionType } from "@utils/content-types";
 import styles from "@styles/components/sections/works.module.scss"
 import { motion } from "framer-motion";
-import { fadeIn, slideInDown, slideInLeft, slideInRight } from "@utils/framer-motion-animations";
+import { fadeIn, slideInDown, slideInRight } from "@utils/framer-motion-animations";
 import ProjectCard from "@components/cards/project-card";
 
 interface Props {
@@ -22,14 +22,6 @@ const WorksSection = (
 
     const getFirstProject = () => projects.find(project => project.name == "gemex") || projects[0]
 
-    const getOddIdxProjects = () => projects.filter((p, index) => index % 2 == 1 && p.name != "gemex")
-
-    const getEvenIdxProjects = () => projects.filter((p, index) => index % 2 == 0 && p.name != "gemex")
-
-    const getLeftColProjects = () => getOddIdxProjects().length >= getEvenIdxProjects().length ? getOddIdxProjects() : getEvenIdxProjects()
-    const getRightColProjects = () => getOddIdxProjects().length >= getEvenIdxProjects().length ? getEvenIdxProjects() : getOddIdxProjects()
-
-    
     // render
 
     return (
@@ -51,32 +43,18 @@ const WorksSection = (
                     />
                 </motion.ul>
             </section>
-            <div className={styles.columnsContainer}>
-                { /* @ts-ignore */ }
-                <motion.ul { ...slideInLeft }>
-                {
-                    getLeftColProjects().map((project, index) => (
-                        <ProjectCard 
-                            key={`${project.name}_${index}`}
-                            buttonText={content.project_card_cta_text}
-                            content={project}
-                        />
-                    ))
-                }
-                </motion.ul>
-                { /* @ts-ignore */}
-                <motion.ul { ...slideInRight } className={styles.rightCol}>
-                {
-                    getRightColProjects().map((project, index) => (
-                        <ProjectCard 
-                            key={`${project.name}_${index}`}
-                            buttonText={content.project_card_cta_text}
-                            content={project}
-                        />
-                    ))
-                }
-                </motion.ul>
-            </div>
+            { /* @ts-ignore */ }
+            <motion.ul { ...slideInRight } className={styles.projectList}>
+            {
+                projects.filter(p => p.name != "gemex").map((project, index) => (
+                    <ProjectCard 
+                        key={`${project.name}_${index}`}
+                        buttonText={content.project_card_cta_text}
+                        content={project}
+                    />
+                ))
+            }
+            </motion.ul>
         </div>
     )
 }

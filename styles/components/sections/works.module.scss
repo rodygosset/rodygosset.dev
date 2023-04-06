@@ -7,121 +7,125 @@
 .container {
     background: $black-alt;
     overflow-x: hidden;
-}
+    position: relative;
 
-.worksSection {
+    .worksSection {
 
-    background: linear-gradient(180deg, rgba($black-alt, 0%) 0%, $black-alt 100%), url("/images/works-background-image.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
-
-    @include flex-container(row, nowrap, center, center);
-    min-width: fit-content;
-    width: 100vw;
-    min-height: 100vh;
-    height: fit-content;
-    padding: $nav-bar-height 5vw 5vh;
-    gap: 60px;
-
-    color: $white;
-
-    overflow-x: hidden;
-
-    .sectionIntro {
-
-        @include flex-container(column, nowrap, center, flex-start);
-        gap: 60px;
-        flex: 1;
-
-
-        h1 {
-            @include hero-text;
-            color: $white;
-        }
-
-        .heroText {
-
-            @include flex-container(column, nowrap, center, flex-start);
-            gap: 30px;
-
-            max-width: 250px;
-
-            p {
-                @include text-md-regular;
-                color: $white-400;
-            }
+        background: linear-gradient(180deg, rgba($black-alt, 0%) 0%, $black-alt 100%), url("/images/works-background-image.jpg") no-repeat;
+        background-size: cover;
+        background-position: center;
     
-            h2 {
-                @include header-1;
-                font-size: $h2-font-size;
+        @include flex-container(row, nowrap, center, center);
+        min-width: fit-content;
+        width: 100vw;
+        min-height: 100vh;
+        height: fit-content;
+        padding: $nav-bar-height 5vw 5vh;
+        gap: 60px;
+    
+        color: $white;
+    
+        overflow-x: hidden;
+    
+        .sectionIntro {
+    
+            @include flex-container(column, nowrap, center, flex-start);
+            gap: 60px;
+            // position: sticky;
+            // top: $nav-bar-height + 20px;
+    
+    
+            h1 {
+                @include hero-text;
                 color: $white;
             }
-
-        }
-
-    }
-
-    .heroProjectContainer {
-
-        @include reset-list;
-        @include flex-container(column, nowrap, center, flex-end);
-        flex: 1;
-    }
-
-
-    @media (max-width: $bp-md) {
-        flex-direction: column;
-        gap: 0px;
-        padding: 0;
-
-        .sectionIntro {
-            min-height: 100vh;
-        }
-
-        .sectionIntro, .heroProjectContainer {
-            padding: $nav-bar-height $mobile-side-padding 5vh;
-            width: 100vw;
-        }
-
-        .heroProjectContainer {
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        .sectionIntro {
-            align-items: center;
-
+    
             .heroText {
+    
+                @include flex-container(column, nowrap, center, flex-start);
+                gap: 30px;
+    
+                max-width: 250px;
+    
+                p {
+                    @include text-md-regular;
+                    color: $white-400;
+                }
+        
+                h2 {
+                    @include header-1;
+                    font-size: $h2-font-size;
+                    color: $white;
+                }
+    
+            }
+    
+        }
+    
+        .heroProjectContainer {
+    
+            @include reset-list;
+            @include flex-container(column, nowrap, center, flex-end);
+            flex: 1;
+        }
+    
+    
+        @media (max-width: $bp-lg) {
+            flex-direction: column;
+            gap: 0px;
+            padding: 0;
+    
+            .sectionIntro {
+                min-height: 100vh;
+            }
+    
+            .sectionIntro, .heroProjectContainer {
+                padding: $nav-bar-height $mobile-side-padding 5vh;
+                width: 100vw;
+            }
+    
+            .heroProjectContainer {
                 align-items: center;
-                text-align: center;
+                justify-content: flex-end;
+            }
+    
+            .sectionIntro {
+                align-items: center;
+    
+                .heroText {
+                    align-items: center;
+                    text-align: center;
+                }
             }
         }
+    
     }
 
-}
 
-.columnsContainer {
-    @include flex-container(row, nowrap, space-between, flex-start);
-    gap: 60px;
-    padding: 0 5vw 5vh;
-
-    ul {
+    ul.projectList {
         @include reset-list;
-        @include flex-container(row, wrap, flex-end, flex-start);
-        gap: 60px;
+        // @include flex-container(row, wrap, flex-end, flex-start);
+        // gap: 60px;
         width: 100%;
+        padding: 0 5vw 5vh;
+        display: grid;
+        gap: 60px;
+        grid-template-columns: repeat(auto-fit, minmax($project-card-width, 1fr));
+        justify-items: flex-end;
 
-        &.rightCol {
-            min-width: $project-card-width;
-            width: $project-card-width;
+        @media (min-width: $bp-lg) and (max-width: 1400px) {
+            grid-template-columns: repeat(auto-fit, minmax(calc($project-card-width - 150px), 1fr));
+        }
+
+        @media (max-width: $bp-lg) {
+            justify-items: center;
         }
     }
 
     @media (max-width: $bp-md) {
-        @include flex-container(column, nowrap, flex-start, center);
-
-        ul {
-            justify-content: center;
+        ul.projectList {
+            @include flex-container(column, nowrap, flex-start, center);
+            padding: 0 $mobile-side-padding 5vh;
         }
     }
 }
