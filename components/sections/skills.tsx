@@ -58,7 +58,7 @@ const SkillsSection = (
                 <div className={styles.sectionTitle}>
                     <h3>{content.header}</h3>
                     <p>{content.header_caption}</p>
-                    <p className={styles.skillCardsCTA}>{content.skill_card_cta_text}</p>
+                    {/* <p className={styles.skillCardsCTA}>{content.skill_card_cta_text}</p> */}
                 </div>
                 <ul>
                 {

@@ -113,8 +113,12 @@
         grid-template-columns: repeat(auto-fit, minmax($project-card-width, 1fr));
         justify-items: flex-end;
 
-        @media (min-width: $bp-lg) and (max-width: 1400px) {
+        @media (min-width: 1067px) and (max-width: 1400px) {
             grid-template-columns: repeat(auto-fit, minmax(calc($project-card-width - 150px), 1fr));
+        }
+
+        @media (min-width: $bp-lg) and (max-width: 1067px) {
+            grid-template-columns: repeat(auto-fit, minmax(calc($project-card-width - 200px), 1fr));
         }
 
         @media (max-width: $bp-lg) {

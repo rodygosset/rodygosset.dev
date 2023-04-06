@@ -7,7 +7,7 @@
 
 .card {
 
-    @include flex-container(column, nowrap, center, flex-start);
+    @include flex-container(column, nowrap, flex-start, flex-start);
     padding: 0;
     margin: 0;
 
