@@ -63,6 +63,7 @@ const Home: NextPage<Props> = (
 	// @ts-ignore
 	const getSectionId = (section: string) => getLocaleNavContent()[`${section}_section_id`]
 
+	const metaTitle = "Rody Gosset's portfolio"
 	const metaDescription = "Rody Gosset's portfolio - Web developper & designer"
 
 	// render
@@ -70,15 +71,18 @@ const Home: NextPage<Props> = (
 	return (
 		<>
 			<Head>
-				<title>Rody Gosset&apos;s portfolio</title>
+				<title>{ metaTitle }</title>
 				<meta name="description" content={metaDescription} />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="shortcut icon" href="favicon/favicon.svg" type="img/svg" />
 				<link rel="apple-touch-icon" sizes="180x180" href="/favicon/favicon-180x180.png" />
 				<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"/>
 				<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
+				<meta name="og:title" content={metaTitle} />
+				<meta name="twitter:title" content={metaTitle} />
 				<meta name="og:type" content="website" />
 				<meta name="og:description" content={metaDescription} />
+				<meta name="twitter:description" content={metaDescription} />
 				<meta name="og:url" content="https://www.rodygosset.dev/" />
 				<meta name="og:image" content="https://www.rodygosset.dev/images/my-memoji-rectangle.png" />
 			</Head>
