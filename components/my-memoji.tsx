@@ -42,6 +42,7 @@ const MyMemoji = (
                     objectFit: "contain", 
                     top: "auto"
                 }}
+                loading="eager"
             />
         </motion.div>
     )
