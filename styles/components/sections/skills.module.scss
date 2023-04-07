@@ -58,7 +58,7 @@
             @include flex-container(column, nowrap, center, flex-start);
             gap: 10px;
 
-            h3 {
+            h2 {
                 @include header-3-medium;
             }
     
