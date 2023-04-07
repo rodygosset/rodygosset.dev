@@ -48,9 +48,11 @@ const HeroSection = (
                     className={styles.links}>
                     <Link href={content.github_link} target="_blank">
                         <FontAwesomeIcon icon={faGithub} />
+                        <span style={{ display: 'none' }}>GitHub</span>
                     </Link>
                     <Link href={content.linkedin_link} target="_blank">
                         <FontAwesomeIcon icon={faLinkedin} />
+                        <span style={{ display: 'none' }}>LinkedIn</span>
                     </Link>
                     <EmailBox 
                         address={content.email}

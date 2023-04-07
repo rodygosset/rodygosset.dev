@@ -149,6 +149,7 @@ const Header = (
             <header id={styles.header} className={getHeaderClassNames()}>
                 <Link href="/">
                     <ReactSVG src="/assets/logo.svg" />
+                    <span style={{ display: 'none' }}>Logo</span>
                 </Link>
                 <Button
                     hasPadding={false}
@@ -156,6 +157,7 @@ const Header = (
                     role="tertiary"
                     onClick={openNav}>
                     <ReactSVG src="/assets/burger.svg" />
+                    <span style={{ display:'none' }}>Menu</span>
                 </Button>
             </header>
 
