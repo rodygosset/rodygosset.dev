@@ -23,7 +23,7 @@ const MyMemoji = (
         return classNames
     }
 
-    const getSource = () => `/images/my-memoji${square ? '' : '-rectangle' }.png`
+    const getSource = () => `/images/my-memoji${square ? '' : '-rectangle' }.webp`
 
 
     // render
