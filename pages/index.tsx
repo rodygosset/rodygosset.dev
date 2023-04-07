@@ -1,23 +1,23 @@
 import Head from 'next/head'
 import styles from '@styles/pages/home.module.scss'
 import { GetServerSideProps, NextPage } from 'next'
-import { useEffect } from 'react'
-import { getContactFormContent, getHeroSectionContent, getNavContent, getProjectCardsContent, getSkillCardsContent, getSkillsSectionContent, getWorksSectionContent } from '@utils/data-fetching'
+import { LocaleContentType, getContent } from '@utils/data-fetching'
 import { useRouter } from 'next/router'
 import HeroSection from '@components/sections/hero'
 import Header from '@components/layout/header'
 import SkillsSection from '@components/sections/skills'
 import WorksSection from '@components/sections/works'
 import ContactSection from '@components/sections/contact'
+import { ContactFormType, HeroSectionType, NavType, ProjectCardType, SkillCardType, SkillsSectionType, WorksSectionType } from '@utils/content-types'
 
 interface Props {
-	navContent: Awaited<ReturnType<typeof getNavContent>>
-	heroSectionContent: Awaited<ReturnType<typeof getHeroSectionContent>>,
-	skillsSectionContent: Awaited<ReturnType<typeof getSkillsSectionContent>>,
-	skillCardsContent: Awaited<ReturnType<typeof getSkillCardsContent>>,
-	worksSectionContent: Awaited<ReturnType<typeof getWorksSectionContent>>,
-	projectCardsContent: Awaited<ReturnType<typeof getProjectCardsContent>>
-	contactFormContent: Awaited<ReturnType<typeof getContactFormContent>>,
+	navContent: LocaleContentType<NavType>,
+	heroSectionContent: LocaleContentType<HeroSectionType>,
+	skillsSectionContent: LocaleContentType<SkillsSectionType>,
+	skillCardsContent: SkillCardType[],
+	worksSectionContent: LocaleContentType<WorksSectionType>,
+	projectCardsContent: LocaleContentType<ProjectCardType[]>,
+	contactFormContent: LocaleContentType<ContactFormType>
 }
 
 const Home: NextPage<Props> = (
@@ -115,16 +115,18 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
 	// the data fetching logic, using the sanity client
 	// was exported to helper function in the utils/data-fetching.ts file
 	// to keep this function minimal
+
+	const pageContent = await getContent()
   
 	return {
 		props: {
-			navContent: await getNavContent(),
-			heroSectionContent: await getHeroSectionContent(),
-			skillsSectionContent: await getSkillsSectionContent(),
-			skillCardsContent: await getSkillCardsContent(),
-			worksSectionContent: await getWorksSectionContent(),
-			contactFormContent: await getContactFormContent(),
-			projectCardsContent: await getProjectCardsContent()
+			navContent: pageContent.nav,
+			heroSectionContent: pageContent.heroSection,
+			skillsSectionContent: pageContent.skillsSection,
+			skillCardsContent: pageContent.skillCards,
+			worksSectionContent: pageContent.worksSection,
+			contactFormContent: pageContent.contactForm,
+			projectCardsContent: pageContent.projectCards
 		},
 	}
   }

@@ -1,41 +1,61 @@
 import sanityClient from "client"
-import { ContactFormType, HeroSectionType, NavType, ProjectCardType, SkillCardType, SkillsSectionType, WorksSectionType } from "./content-types"
+import { ContactFormType, HeroSectionType, NavType, ProjectCardType, SanityElement, SkillCardType, SkillsSectionType, WorksSectionType } from "./content-types"
 
-
-export const getSectionContent = async <T>(type: string) => {
-    const queryEN = `*[_type=="${type}" && lang=="EN"]`
-	const queryFR = `*[_type=="${type}" && lang=="FR"]`
-
-	const contentEN = await sanityClient.fetch<T[]>(queryEN)
-	const contentFR = await sanityClient.fetch<T[]>(queryFR)
-
-    return {
-		en: contentEN[0],
-		fr: contentFR[0]
-	}
+export interface LocaleContentType<T> {
+	en: T;
+	fr: T;
 }
 
-export const getNavContent = () => getSectionContent<NavType>("nav")
+interface Content {
+	nav: LocaleContentType<NavType>;
+	heroSection: LocaleContentType<HeroSectionType>;
+	skillsSection: LocaleContentType<SkillsSectionType>;
+	worksSection: LocaleContentType<WorksSectionType>;
+	contactForm: LocaleContentType<ContactFormType>;
+	projectCards: LocaleContentType<ProjectCardType[]>;
+	skillCards: SkillCardType[];
+}
 
-export const getHeroSectionContent = () => getSectionContent<HeroSectionType>("hero_section")
+export const getContent = async () => {
 
-export const getSkillsSectionContent = () => getSectionContent<SkillsSectionType>("skills_section")
+	const content = await sanityClient.fetch<SanityElement[]>('*')
+
+	const contentEN = content.filter(e => typeof e.lang !== "undefined" && e.lang == "EN")
+	const contentFR = content.filter(e => typeof e.lang !== "undefined" && e.lang == "FR")
+
+	// const contentEN = await sanityClient.fetch<SanityElement[]>(queryEN)
+	// const contentFR = await sanityClient.fetch<SanityElement[]>(queryFR)
+
+	const structuredContent: Content = {
+		nav: {
+			en: contentEN.filter(e => e._type == 'nav')[0] as NavType,
+			fr: contentFR.filter(e => e._type == 'nav')[0] as NavType
+		},
+		heroSection: {
+			en: contentEN.filter(e => e._type == 'hero_section')[0] as HeroSectionType,
+			fr: contentFR.filter(e => e._type == 'hero_section')[0] as HeroSectionType
+		},
+		skillsSection: {
+			en: contentEN.filter(e => e._type == 'skills_section')[0] as SkillsSectionType,
+			fr: contentFR.filter(e => e._type == 'skills_section')[0] as SkillsSectionType
+		},
+		worksSection: {
+			en: contentEN.filter(e => e._type == 'works_section')[0] as WorksSectionType,
+			fr: contentFR.filter(e => e._type == 'works_section')[0] as WorksSectionType
+		},
+		contactForm: {
+			en: contentEN.filter(e => e._type == 'contact_form')[0] as ContactFormType,
+			fr: contentFR.filter(e => e._type == 'contact_form')[0] as ContactFormType
+		},
+		projectCards: {
+			en: contentEN.filter(e => e._type == 'project_card') as ProjectCardType[],
+			fr: contentFR.filter(e => e._type == 'project_card') as ProjectCardType[]
+		},
+		skillCards: await getSkillCardsContent()
+	}
+
+	return structuredContent
+
+}
 
 export const getSkillCardsContent = () => sanityClient.fetch<SkillCardType[]>(`*[_type=="skill_card"]`)
-
-export const getWorksSectionContent = () => getSectionContent<WorksSectionType>("works_section")
-
-export const getContactFormContent = () => getSectionContent<ContactFormType>("contact_form")
-
-export const getProjectCardsContent = async () => {
-    const queryEN = `*[_type=="project_card" && lang=="EN"]`
-	const queryFR = `*[_type=="project_card" && lang=="FR"]`
-
-	const contentEN = await sanityClient.fetch<ProjectCardType[]>(queryEN)
-	const contentFR = await sanityClient.fetch<ProjectCardType[]>(queryFR)
-
-    return {
-		en: contentEN,
-		fr: contentFR
-	}
-}

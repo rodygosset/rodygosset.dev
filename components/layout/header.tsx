@@ -106,7 +106,7 @@ const Header = (
         setNavOpen(false)
         section.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
-
+    
     // utils
 
     const router = useRouter()

@@ -1,7 +1,12 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
+export interface SanityElement {
+    _type: string;
+    lang?: "EN" | "FR";
+}
 
-export interface NavType {
+
+export interface NavType extends SanityElement {
     lang: "EN" | "FR";
     hero_section_label: string;
     hero_section_id: string;
@@ -16,7 +21,7 @@ export interface NavType {
     resume_link: string;
 }
 
-export interface HeroSectionType {
+export interface HeroSectionType extends SanityElement {
     lang: "EN" | "FR";
     greeting_start: string;
     full_name: string;
@@ -30,7 +35,7 @@ export interface HeroSectionType {
     buttonText: string;
 }
 
-export interface SkillsSectionType {
+export interface SkillsSectionType extends SanityElement {
     lang: "EN" | "FR";
     section_title: string;
     intro: string;
@@ -44,14 +49,14 @@ export interface SkillsSectionType {
     skill_card_cta_text: string;
 }
 
-export interface SkillCardType {
+export interface SkillCardType extends SanityElement {
     name: string;
     xp_time: number;
     xp_unit: "Y" | "M";
     logo: SanityImageSource;
 }
 
-export interface WorksSectionType {
+export interface WorksSectionType extends SanityElement {
     lang: "EN" | "FR";
     section_title: string;
     hero_text_caption_1: string;
@@ -60,7 +65,7 @@ export interface WorksSectionType {
     project_card_cta_text: string;
 }
 
-export interface ContactFormType {
+export interface ContactFormType extends SanityElement {
     lang: "EN" | "FR";
     section_title: string;
     caption: string;
@@ -72,7 +77,7 @@ export interface ContactFormType {
     validation_error_message: string;
 }
 
-export interface ProjectCardType {
+export interface ProjectCardType extends SanityElement {
     lang: "EN" | "FR";
     name: string;
     title: string;
