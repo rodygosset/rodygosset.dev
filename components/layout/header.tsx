@@ -26,16 +26,16 @@ const Header = (
     }: Props
 ) => {
 
+    // get the current route
+
+    const router = useRouter()
+
     // state
 
     const [darkMode, setDarkMode] = useState(isDarkMode || false)
     const [navOpen, setNavOpen] = useState(false)
 
-    const [currentSectionId, setCurrentSectionId] = useState(content.hero_section_id)
-
-    // get current route
-
-    const router = useRouter()
+    const [currentSectionId, setCurrentSectionId] = useState(router.pathname === '/' ? content.hero_section_id : "")
 
     // event listeners for scroll based effects
 
