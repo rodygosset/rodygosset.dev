@@ -84,10 +84,24 @@ export interface ProjectCardType extends SanityElement {
     title: string;
     project_type: string;
     description: string;
+    intro_paragraph: string;
     roles: string[];
     skills: SkillCardType[];
     website_link: string;
     github_link: string;
     figma_design: string; // link
     thumbnail: SanityImageSource;
+}
+
+export interface ProjectPageType extends SanityElement {
+    lang: "EN" | "FR";
+    roles_section_title_singular: string;
+    roles_section_title_plural: string;
+    tech_stack_section_title_singular: string;
+    tech_stack_section_title_plural: string;
+    links_section_title_singular: string;
+    links_section_title_plural: string;
+    website_link_text: string;
+    github_link_text: string;
+    figma_link_text: string;
 }

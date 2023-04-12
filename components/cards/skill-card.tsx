@@ -2,27 +2,36 @@ import { SkillCardType } from "@utils/content-types"
 import styles from "@styles/components/cards/skill-card.module.scss"
 import Image from "next/image";
 import { getImageURL } from "client";
-import Button from "@components/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHourglass, faHourglassHalf } from "@fortawesome/free-solid-svg-icons";
+import { faHourglassHalf } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
     data: SkillCardType;
-    unit: string;
+    unit?: string;
+    isDarkMode?: boolean;
 }
 
 const SkillCard = (
     {
         data,
-        unit
+        unit,
+        isDarkMode
     }: Props
 ) => {
 
 
+    // utils
+
+    const getClassNames = () => {
+        let classNames = styles.card
+        classNames += isDarkMode ? ' ' + styles.darkMode : ''
+        return classNames
+    }
+
     // render
 
     return (
-        <li className={styles.card}>
+        <li className={getClassNames()}>
             <div className={styles.illustrationContainer}>
                 <Image 
                     quality={100}

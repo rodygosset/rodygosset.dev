@@ -14,11 +14,20 @@
     background: $black-alt;
     color: $white;
 
+    .contentContainer {
+        @include flex-container(row, nowrap, flex-start, flex-start);
+        gap: 30px;
+        width: 100%;
+    }
+
     .info {
         @include flex-container(column, nowrap, flex-start, flex-start);
         width: 100%;
         gap: 30px;
         flex: 1;
+
+        top: $nav-bar-height;
+        position: sticky;
 
         .thumbnailContainer {
             position: relative;
@@ -48,6 +57,95 @@
             color: $white-600;
             max-width: 600px;
         }
+
+        .roles {
+            @include flex-container(column, nowrap, flex-start, flex-start);
+            width: 100%;
+            gap: 20px;
+
+            h2 {
+                @include header-3-regular;
+            }
+
+            ul {
+                @include reset-list;
+                @include flex-container(row, wrap, flex-start, flex-start);
+                gap: 15px;
+                width: 100%;
+
+                li {
+                    @include button-text;
+                    color: $white-600;
+                    padding: 10px 20px;
+                    border: 1px solid $white-100;
+
+                    transition: all 200ms ease-in-out;
+
+                    &:hover {
+                        background: $white-100;
+                    }
+                }
+            }
+        }
+    }
+
+    .metaData {
+
+        @include flex-container(column, nowrap, flex-start, flex-start);
+        gap: 30px;
+
+        h2 {
+            @include header-3-regular;
+        }
+
+        ul {
+            @include reset-list;
+            width: 100%;
+            min-width: calc(160px * 2 + 30px);
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            align-items: start;
+
+            @media (max-width: 848px) and (min-width: $bp-md), (max-width: $bp-sm) {
+                justify-items: center;
+            }
+
+            @media (max-width: $bp-sm) {
+                gap: 15px;
+            }
+        
+            &.links {
+
+                @include flex-container(row, wrap, flex-start, flex-start);
+                gap: 30px;
+
+
+                li a {
+
+                    @include flex-container(column, nowrap, center, center);
+                    gap: 10px;
+                    padding: 20px;
+    
+                    border: 1px solid $white-100;
+    
+                    svg {
+                        width: 40px;
+                        height: 40px;
+                    }
+    
+                    p {
+                        @include button-text;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                        background: $white-100;
+                    }
+                }
+            }
+        }
+
     }
 
     @media (max-width: $bp-md) {
@@ -59,7 +157,13 @@
 
     @media (max-width: $bp-lg) {
 
+        .contentContainer {
+            @include flex-container(column, nowrap, flex-start, stretch);
+        }
+
         .info {
+
+            position: initial;
 
             .thumbnailContainer {
                 max-width: 100%;

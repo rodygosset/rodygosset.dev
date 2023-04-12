@@ -18,14 +18,11 @@ interface Content {
 
 export const getContent = async () => {
 
-	const content = await sanityClient.fetch<SanityElement[]>('*')
+	const content = await sanityClient.fetch<SanityElement[]>('*[_type != "project_page"]')
 
 	const contentEN = content.filter(e => typeof e.lang !== "undefined" && e.lang == "EN")
 	const contentFR = content.filter(e => typeof e.lang !== "undefined" && e.lang == "FR")
-
-	// const contentEN = await sanityClient.fetch<SanityElement[]>(queryEN)
-	// const contentFR = await sanityClient.fetch<SanityElement[]>(queryFR)
-
+	
 	const structuredContent: Content = {
 		nav: {
 			en: contentEN.filter(e => e._type == 'nav')[0] as NavType,

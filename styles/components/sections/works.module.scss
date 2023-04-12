@@ -31,8 +31,6 @@
     
             @include flex-container(column, nowrap, center, flex-start);
             gap: 60px;
-            // position: sticky;
-            // top: $nav-bar-height + 20px;
     
     
             h1 {
