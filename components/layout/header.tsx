@@ -16,24 +16,32 @@ interface NavItem {
 
 interface Props {
     content: NavType;
+    isDarkMode?: boolean;
 }
 
 const Header = (
     {
-        content
+        content,
+        isDarkMode
     }: Props
 ) => {
 
     // state
 
-    const [darkMode, setDarkMode] = useState(false)
+    const [darkMode, setDarkMode] = useState(isDarkMode || false)
     const [navOpen, setNavOpen] = useState(false)
 
     const [currentSectionId, setCurrentSectionId] = useState(content.hero_section_id)
 
+    // get current route
+
+    const router = useRouter()
+
     // event listeners for scroll based effects
 
     useEffect(() => {
+
+        if(router.pathname !== '/') return
 
         // get all main page sections
 
@@ -108,10 +116,6 @@ const Header = (
     }
     
     // utils
-
-    const router = useRouter()
-
-    useEffect(() => console.log(router.locale), [])
 
     const getLocale = () => router.locale == "fr" ? "en-US" : "fr"
 
@@ -189,7 +193,7 @@ const Header = (
                         ))
                     }
                     <li className={styles.link}>
-                        <Link href="/" onClick={closeNav} locale={getLocale()}>
+                        <Link href={router.asPath} onClick={closeNav} locale={getLocale()}>
                             <FontAwesomeIcon icon={faLanguage}/>
                             { content.lang_button_text }
                         </Link>

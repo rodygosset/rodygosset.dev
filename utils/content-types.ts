@@ -80,7 +80,14 @@ export interface ContactFormType extends SanityElement {
 export interface ProjectCardType extends SanityElement {
     lang: "EN" | "FR";
     name: string;
+    display_name: string;
     title: string;
+    project_type: string;
     description: string;
+    roles: string[];
+    skills: SkillCardType[];
+    website_link: string;
+    github_link: string;
+    figma_design: string; // link
     thumbnail: SanityImageSource;
 }

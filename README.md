@@ -1,29 +1,20 @@
 # RODYGOSSET.DEV
 
 This is the [Next.js](https://nextjs.org) project for my personal portfolio.  
-It is [statically generated](https://nextjs.org/docs/basic-features/pages#static-generation), and all the data and media I'm using can be found in this repository.
-
-## FEATURES
-
-
-If you want to learn from how I integrated and implemented this project,  
-check out the [How It's Made](https://github.com/rodygosset/rodygosset.dev/blob/main/public/markdown/en/HOWITSMADE.md) page.
-
-The website is available in English and French.
-
-It uses on-scroll animations to give movement to the content.
+It uses [Sanity](https://sanity.io) to get all of the content displayed on the website, except for some images.
 
 ## TECH STACK
 
-Here's the list of technologies and libraries I've used  
+Here's the list of technologies I've used  
 to bring my ideas to life:
 
 * [Next.js](https://nextjs.org)
 * [TypeScript](https://typescriptlang.org)
 * [SCSS](https://sass-lang.com)
+* [Sanity](https://sanity.io)
+* [Framer Motion](https://www.framer.com/motion/)
 
 ## SEE IT LIVE
 
-The website is not live yet.  
-When it will be, this section will be updated.
+The website is live at [rodygosset.dev](https://rodygosset.dev)
 

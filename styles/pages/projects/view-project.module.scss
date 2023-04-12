@@ -1,0 +1,76 @@
+@import "@styles/base/_reset.scss";
+@import "@styles/base/_mixins.scss";
+@import "@styles/base/_typography.scss";
+@import "@styles/abstracts/_colors.scss";
+@import "@styles/abstracts/_variables.scss";
+
+
+.main {
+
+    @include flex-container(row, nowrap, flex-start, flex-start);
+    padding: $nav-bar-height 5vw 5vh !important;
+    gap: 30px;
+
+    background: $black-alt;
+    color: $white;
+
+    .info {
+        @include flex-container(column, nowrap, flex-start, flex-start);
+        width: 100%;
+        gap: 30px;
+        flex: 1;
+
+        .thumbnailContainer {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 1.5;
+        }
+
+        .title {
+
+            @include flex-container(column, nowrap, flex-start, flex-start);
+            width: 100%;
+            gap: 10px;
+
+            h1 {
+                @include header-2-regular;
+            }
+    
+            p {
+                @include text-md-medium;
+                color: $white-600;
+            }
+        }
+
+        p {
+            @include text-md-regular;
+            color: $white-600;
+            max-width: 600px;
+        }
+    }
+
+    @media (max-width: $bp-md) {
+
+        padding: $mobile-nav-bar-height $mobile-side-padding 5vh !important;
+
+        @include flex-container(column, nowrap, flex-start, stretch);
+    }
+
+    @media (max-width: $bp-lg) {
+
+        .info {
+
+            .thumbnailContainer {
+                max-width: 100%;
+            }
+
+            p {
+                max-width: 100%;
+            }
+        }
+        
+    }
+
+
+}
