@@ -80,7 +80,7 @@ const ViewProject: NextPage<Props> = (
 				<meta property="og:image" content={getImageURL(project.thumbnail)} />
 			</Head>
 			<Header content={getLocaleNavContent()} isDarkMode />
-            <main id="main" className={styles.main}>
+            <main className={styles.main}>
                 <BackButton/>
                 <div className={styles.contentContainer}>
                     <section id="info" className={styles.info}>

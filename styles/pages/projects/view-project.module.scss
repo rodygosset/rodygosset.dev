@@ -13,6 +13,7 @@
 
     background: $black-alt;
     color: $white;
+    width: 100vw !important;
 
     .contentContainer {
         @include flex-container(row, nowrap, flex-start, flex-start);
@@ -107,11 +108,13 @@
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             align-items: start;
 
-            @media (max-width: 848px) and (min-width: $bp-md), (max-width: $bp-sm) {
+            @media (max-width: 848px) and (min-width: $bp-md) {
                 justify-items: center;
             }
 
             @media (max-width: $bp-sm) {
+                // justify-items: start;
+                min-width: 160px;
                 gap: 15px;
             }
         
@@ -153,6 +156,9 @@
         padding: $mobile-nav-bar-height $mobile-side-padding 5vh !important;
 
         @include flex-container(column, nowrap, flex-start, stretch);
+    
+        
+    
     }
 
     @media (max-width: $bp-lg) {
@@ -166,11 +172,11 @@
             position: initial;
 
             .thumbnailContainer {
-                max-width: 100%;
+                max-width: none;
             }
 
             p {
-                max-width: 100%;
+                max-width: none;
             }
         }
         
