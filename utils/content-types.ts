@@ -54,6 +54,7 @@ export interface SkillCardType extends SanityElement {
     xp_time: number;
     xp_unit: "Y" | "M";
     logo: SanityImageSource;
+    logo_darkmode?: SanityImageSource; 
 }
 
 export interface WorksSectionType extends SanityElement {

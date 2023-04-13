@@ -85,6 +85,7 @@ const Home: NextPage<Props> = (
 				<meta property="twitter:description" content={metaDescription} />
 				<meta property="og:url" content="https://www.rodygosset.dev/" />
 				<meta property="og:image" content="https://www.rodygosset.dev/images/my-memoji-rectangle.png" />
+				<meta property="twitter:image" content="https://www.rodygosset.dev/images/my-memoji-rectangle.png" />
 			</Head>
 			<Header content={getLocaleNavContent()} />
 			<main id={styles.main}>

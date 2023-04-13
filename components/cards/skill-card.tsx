@@ -28,6 +28,8 @@ const SkillCard = (
         return classNames
     }
 
+    const getImage = () => isDarkMode && data.logo_darkmode ? data.logo_darkmode : data.logo  
+
     // render
 
     return (
@@ -35,7 +37,7 @@ const SkillCard = (
             <div className={styles.illustrationContainer}>
                 <Image 
                     quality={100}
-                    src={getImageURL(data.logo)} 
+                    src={getImageURL(getImage())} 
                     alt={`${data.name} logo`} 
                     priority
                     fill

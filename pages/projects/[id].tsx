@@ -78,6 +78,7 @@ const ViewProject: NextPage<Props> = (
 				<meta property="twitter:description" content={project.description} />
 				<meta property="og:url" content={router.asPath} />
 				<meta property="og:image" content={getImageURL(project.thumbnail)} />
+                <meta property="twitter:image" content={getImageURL(project.thumbnail)} />
 			</Head>
 			<Header content={getLocaleNavContent()} isDarkMode />
             <main className={styles.main}>

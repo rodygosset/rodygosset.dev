@@ -23,5 +23,10 @@ export default {
             type: "image",
             title: "SVG Logo"
         },
+        {
+            name: "logo_darkmode",
+            type: "image",
+            title: "SVG Logo for Dark Mode"
+        },
     ]
 }
