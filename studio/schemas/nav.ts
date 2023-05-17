@@ -59,9 +59,9 @@ export default {
             title: "Resume Link Text"
         },
         {
-            name: "resume_link",
-            type: "string",
-            title: "Resume Link"
+            name: "resume",
+            type: "file",
+            title: "Resume"
         },
     ]
 

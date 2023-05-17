@@ -8,6 +8,7 @@ import { NavType } from "@utils/content-types"
 import { faDownload, faLanguage, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useRouter } from "next/router"
+import { getFileURL } from "client"
 
 interface NavItem {
     label: string;
@@ -199,7 +200,7 @@ const Header = (
                         </Link>
                     </li>
                     <li className={styles.link} onClick={closeNav}>
-                        <Link href={content.resume_link} target="_blank" locale="en-US">
+                        <Link href={getFileURL(content.resume)} target="_blank" locale="en-US">
                             <FontAwesomeIcon icon={faDownload}/>
                             { content.resume_link_text }
                         </Link>

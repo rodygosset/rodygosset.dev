@@ -1,4 +1,5 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { File } from "sanity";
 
 export interface SanityElement {
     _type: string;
@@ -18,7 +19,7 @@ export interface NavType extends SanityElement {
     contact_section_id: string;
     lang_button_text: string;
     resume_link_text: string;
-    resume_link: string;
+    resume: File;
 }
 
 export interface HeroSectionType extends SanityElement {
